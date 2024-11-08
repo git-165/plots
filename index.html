@@ -26,18 +26,40 @@
 
   <div id="plot-container"></div> <!-- Container for the dynamically created iframes -->
 
-  <script>
+ 
     // List of filenames (you can dynamically generate this via a backend or API call)
-    const plotFiles = [
+   <script>
+  // Placeholder for dynamic content
+  const plotFiles = ['mortalidade de neoplasias por região.html',
+      'Mortalidade de neoplasias por sexo.html',
+      'Mortalidade neoplasias cor.html',
+      'mortalidade_ev_3 Região Sudeste.html',
+      'Obitos neoplasias cor.html',
+      'Obitos neoplasias sexo.html',
+      'obitos_ev_2 Região Nordeste.html',
+      'obitos_ev_3 Região Sudeste.html',
+      'obitos_ev_4 Região Sul.html',
       'obitos_neoplasias_cardiovascular.html',
-	  'obitos_neoplasias_infarto.html',
-	  'Obitos neoplasias sexo',
-	  'Mortalidade de neoplasias por sexo.html',
-	  'Ã“bitos por neoplasia - regiÃ£o.html',
-	  'mortalidade de neoplasias por regiÃ£o.html',
-	  'Obitos neoplasias cor.html',
-	  'Mortalidade neoplasias cor.html'
-    ];
+      'obitos_neoplasias_infarto.html',
+      'Óbitos por neoplasia - região.html'];
+  
+  // Container element
+  const container = document.getElementById('plot-container');
+
+  // Loop through the list and create iframes
+  plotFiles.forEach(file => {
+    const div = document.createElement('div');
+    div.className = 'plot-container';
+
+    const iframe = document.createElement('iframe');
+    iframe.src = `plotly/${file}`;
+    iframe.className = 'plot-frame';
+
+    div.appendChild(iframe);
+    container.appendChild(div);
+  });
+</script>
+<script>
 
     // Container element
     const container = document.getElementById('plot-container');

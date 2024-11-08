@@ -1,0 +1,76 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* Basic styling */
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    .plot-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 20px 0;
+    }
+    .plot-frame {
+      width: 80%; /* Adjust width as needed */
+      height: 500px; /* Adjust height as needed */
+      border: 1px solid #ccc;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="plot-container"></div> <!-- Container for the dynamically created iframes -->
+
+ 
+    // List of filenames (you can dynamically generate this via a backend or API call)
+   <script>
+  // Placeholder for dynamic content
+  const plotFiles = [{{plot_files_placeholder}}];
+  
+  // Container element
+  const container = document.getElementById('plot-container');
+
+  // Loop through the list and create iframes
+  plotFiles.forEach(file => {
+    const div = document.createElement('div');
+    div.className = 'plot-container';
+
+    const iframe = document.createElement('iframe');
+    iframe.src = `plotly/${file}`;
+    iframe.className = 'plot-frame';
+
+    div.appendChild(iframe);
+    container.appendChild(div);
+  });
+</script>
+<script>
+
+    // Container element
+    const container = document.getElementById('plot-container');
+
+    // Loop through the list and create iframes
+    plotFiles.forEach(file => {
+      // Create a container div
+      const div = document.createElement('div');
+      div.className = 'plot-container';
+
+      // Create an iframe element
+      const iframe = document.createElement('iframe');
+      iframe.src = `plotly/${file}`;
+      iframe.className = 'plot-frame';
+
+      // Append iframe to container div
+      div.appendChild(iframe);
+
+      // Append container div to the main container
+      container.appendChild(div);
+    });
+  </script>
+
+</body>
+</html>
